@@ -123,7 +123,7 @@ class imperium:
 class tech:
     def __init__(self, name, points):
         self.all = 0
-        self.name = str(name);
+        self.name = str(name)
         self.tier = ""
         self.Tpoints = 0.0
         self.plus = 0
