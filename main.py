@@ -29,45 +29,39 @@ Pomocnicze:
     -/Gal.clear (arg liczbowy) - Komenda do czyszczenia chatów
     -/Gal.ImperiumMajątek - Komenda do wyświetleniaogólnie
      wskaźników do danej planety. (Szybkie)
-    -/Gal.pokazsektorGM- Komenda do wyświetlenia zawartości sektora bez tajemnicy
+     
+    -/Gal.Turawlosci! - Tura dla danej włości
+    -/Gal.usunwlosc - Usuwa daną włość
+    -/Gal.pokazsektorGM-  Wyświetlenia zawartości sektora bez tajemnicy
     -/Gal.pokazsektor (Warstwa)- generuje mapę sektora z zaznaczoną pozycją
     -/Gal.pokazwszechswiat - generuje mapę wszechświata z zanaczonym punktem
-Komendy Główne:
     -/Gal.Tech - Główna komenda do edycji techów i ich dodawnaia
     -/Gal.Majątekedytuj - Główna komenda do edycji zawartości imperiów
-Komendy do tury:
     -/Gal.StwórzturęImperium - Generuje wszystkie informacje
      o danym imperium dla gracza
+     
     -/Gal.TuraWrzechświata - Globalna tura
     -/Gal.DodajImperium (arg) - Komenda do dodawania imperium
     -/Gal.TuraImperium! - Przeskoczenie tury u danego imperium
     -/Gal.UsunImperium (arg liczbowy) - Komenda do usuwania imperiów
     -/Gal.Wylosujuklad - Losuje losowy sektor, i miejsce w nim
      w którym znajduje się układ
+     
     -/Gal.Zmiananazwy - Zmiana nazwy imperium
     -/Gal.Dodajwłość - Dodaj zabudowany glob, z standardową ekonomią
     -/Gal.Dodajpustąwłość - template kolonialny/stacji
-Komendy bazowe:
+
     -/Gal.Zapis! - Zapis zmian w danej turze.
     *Komenda zapisuje aktualne zmiany w obiekcie galaktyki.
      Uważać jak cholera, bo będę musiał przywracać archiwum
     -/Gal.Wczytaj! - Wczytanie bazy na wypadek gdyby bot się zresetował
-Komendy programisty(Niedostępne dla GM, to archiwum):
+    
+    Komendy programisty:
+
     -/Gal.Wczytaj!G (Ture)
     -/Gal.Zapis!G - Zapis turowego obiektu
     ```'''
     await ctx.send(a)
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -120,7 +114,7 @@ async def usun(ctx, x):
         a = m.author == ctx.author and m.channel == ctx.channel
         return a
 
-    main.usun_imperium(x)
+    main.usun_imperium(int(x)-1)
     await ctx.send("Usunięto: " + x + " -Wyślij cokolwiek by kontynuować")
     msg = await master.wait_for('message', check=check, timeout=30)
     if msg == True:
@@ -815,10 +809,21 @@ async def somting(ctx):
     await ctx.send("Wybierz Imperium " + mess)
     msg = await master.wait_for('message', check=check, timeout=30)
     if ((msg.content).isnumeric()):
-        x = int(msg.content) - 1
-        main.imp[x].tura()
-        await asyncio.sleep(5)
+        x = int(msg.content)
+        i = 0
         await clear(ctx, 20)
+        mess = "``` "
+        for a in main.imp[int(x - 1)].wlosci:
+            i = i + 1
+            mess = mess + str(a.nazwa) + " : " + str(i) + "\n"
+        mess = mess + "```"
+        await ctx.send("Wybierz włość: " + mess)
+        msg = await master.wait_for('message', check=check, timeout=30)
+        if ((msg.content).isnumeric()):
+            planet = int(msg.content) - 1
+            main.imp[x-1].wlosci[planet].tura()
+            await asyncio.sleep(5)
+            await clear(ctx, 20)
 
 
 @master.command(name="Zmiananazwy")
