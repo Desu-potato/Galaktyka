@@ -9,11 +9,16 @@ def r(tura):
 def rG():
     a = dill.load(open("zapisy/Galaktyka.pickle", "rb"))
     return a
-
+def rad():
+    a = dill.load(open("map.pickle", "rb"))
+    return a
 def Gal1(gal,tura):
     dill.dump(gal, file=open("zapisy/Galaktykaztury"+str(tura)+".pickle", "wb+"))
 def Gal(gal):
     dill.dump(gal, file=open("zapisy/Galaktyka.pickle", "wb+"))
+
+def aaa(gal):
+    dill.dump(gal, file=open("map.pickle", "wb+"))
 
 class eco:
     def __init__(self,nazwa, pos, sector):
@@ -374,7 +379,5 @@ class galaktyka:
             wynik = random.randint(0, len(a[3].posUWS)-1)
 
             b = a[3].posUWS[wynik]
-            print(b)
-            print(a[3].posNMS)
             return [a[3].posNMS,b]
 

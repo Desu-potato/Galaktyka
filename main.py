@@ -60,6 +60,17 @@ Komendy programisty(Niedostępne dla GM, to archiwum):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 @master.command(name="Imperia")
 @commands.has_role("GM")
 async def PokazImperia(ctx):
@@ -810,9 +821,6 @@ async def somting(ctx):
         await clear(ctx, 20)
 
 
-
-
-
 @master.command(name="Zmiananazwy")
 @commands.has_role("GM")
 async def somting(ctx):
@@ -1004,5 +1012,7 @@ async def somting(ctx):
             planeta = int(msg.content) - 1
             main.imp[x-1].usun(planeta)
             await ctx.send("Usunieto")
+
+
 master.run('Nzg0NTkxODEwMDcyMTUwMDQ2.X8riEA.a2OlmW26JABJ3_N3GkaN-gSSGHo')
 
