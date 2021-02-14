@@ -27,7 +27,7 @@ Pomocnicze:
     -/Gal.PS - Zwykły Panel Sterowania
     -/Gal.Imperia - Wyświetla wszystkie aktualne imperia
     -/Gal.clear (arg liczbowy) - Komenda do czyszczenia chatów
-    -/Gal.ImperiumMajątek - Komenda do wyświetleniaogólnie
+    -/Gal.ImperiumMajątek - Komenda do wyświetlenia ogólnie
      wskaźników do danej planety. (Szybkie)
      
     -/Gal.Turawlosci! - Tura dla danej włości
@@ -1019,5 +1019,5 @@ async def somting(ctx):
             await ctx.send("Usunieto")
 
 
-master.run('Nzg0NTkxODEwMDcyMTUwMDQ2.X8riEA.a2OlmW26JABJ3_N3GkaN-gSSGHo')
+master.run()
 
